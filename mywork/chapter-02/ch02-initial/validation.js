@@ -1,9 +1,4 @@
 window.addEventListener('load', function() {
-  // checkUsername
-  // showUsernameStatus
-
-  let checkUsername = () => {}
-  let showUsernameStatus = () => {}
 
   let usernameInputNode = document.querySelector('#username');
   let registerInputNode = document.querySelector('#register');
@@ -14,9 +9,9 @@ window.addEventListener('load', function() {
     request.open('GET', `checkName.php?username=${usernameInputNode.value}`);
     request.addEventListener('readystatechange', function() {
       usernameInputNode.disabled = true;
+      usernameInputNode.classList.add('inprocess');
       usernameInputNode.classList.remove('inuse');
       usernameInputNode.classList.remove('okay'); 
-      usernameInputNode.classList.toggle('inprocess', true);
       registerInputNode.disabled = true;
 
       if (request.readyState === 4 && request.status === 200) {
